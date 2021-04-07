@@ -57,7 +57,7 @@ def lambda_handler(event, context):
 
 4. Buat API Gateway lambda proxy, enable CORS dan deploy
 
-Masuk ke halaman API Gateway 
+Masuk ke halaman API Gateway kemudian 
 
 5. Buat S3 bucket dan enable website hosting
 
@@ -81,6 +81,8 @@ Kalau sudah, klik `Save changes`
 
 Untuk contoh code ada di `code` folder, download terlebih dahulu file yang ada di folder tersebut.
 
+Rubah End Point dari API Gateway yang ada di javascript file di `js/script.js`
+
 Pada halaman S3, pilih bucket yang sudah kita buat sebelumnya, kemudian klik `Upload` code yang sudah kita download.
 
 ![Bucket](img/upload.png "Bucket")
@@ -92,6 +94,3 @@ Klik tombol `Upload` untuk jika sudah selesai.
 Setelah melakukan setup, kita bisa mencoba website yang sudah kita buat dengan mengakses ke end point static website di S3 kita. Untuk mengetahui end point website, kita bisa masuk ke bucket kita, kemudian pilih tab `Properties` lalu scroll ke bawah untuk website end point kita.
 
 ![Bucket](img/endpoint.png "Bucket")
-
-
-###End

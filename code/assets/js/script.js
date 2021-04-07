@@ -13,37 +13,12 @@ $(function(){
 
         add: function (e, data) {
 
-            // tpl.find('input').knob();
-
-            // tpl.find('span').click(function(){
-
-            //     if(tpl.hasClass('working')){
-            //         jqXHR.abort();
-            //     }
-
-            //     tpl.fadeOut(function(){
-            //         tpl.remove();
-            //     });
-
-            // });
-
-            // var jqXHR = data.submit();
-
             getBase64Image( data.files[0] );
 
         },
 
         progress: function(e, data){
 
-            // var progress = parseInt(data.loaded / data.total * 100, 10);
-
-            // data.context.find('input').val(progress).change();
-
-            // if(progress == 100){
-            //     data.context.removeClass('working');
-            // }
-
-            // getBase64Image( data.files[0] );
 
         },
 
@@ -79,7 +54,6 @@ $(function(){
         reader.readAsDataURL(img);
         reader.onload = function () {
             var data = reader.result.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
-            // console.log(data);
             document.getElementById('imgupload')
                 .setAttribute(
                     'src', reader.result
@@ -100,6 +74,8 @@ $(function(){
                     .append('<i>' + type2 + ":" + msg2 + '</i>');
 
         tpl.appendTo(ul);
+
+        console.log(msg2)
     }
 
     function sentAPIGW(data) {
@@ -121,7 +97,7 @@ $(function(){
             contentType: "application/json",
             success: function(msg){
                 console.log('Success ');
-                putLine('Document Type:', msg.document_type, 'Document Text', msg.detected_text.split("|")[1]);
+                putLine('Document Type:', msg.document_type, 'Document Text', msg.detected_text.replaceAll("|", "\n"));
             }
         });
     }

@@ -56,7 +56,8 @@ section, footer, header, aside{
     background-image:-moz-linear-gradient(top, #373a3d, #313437);
     background-image:linear-gradient(top, #373a3d, #313437);
 
-    width:250px;
+    width:350px;
+    height:550px;
     padding:30px;
     border-radius:3px;
 
@@ -127,9 +128,9 @@ section, footer, header, aside{
 }
 
 #upload ul li p{
-    width: 300px;
-    overflow: hidden;
-    white-space: nowrap;
+    width: 350px;
+    /* overflow: hidden; */
+    word-wrap: break-word;
     color: #EEE;
     font-size: 16px;
     font-weight: bold;
@@ -167,6 +168,8 @@ section, footer, header, aside{
     height: 16px;
     background-position: 0 -12px;
     color: whitesmoke;
+    /* word-wrap: break-word; */
+    width: 120px;
     word-wrap: break-word;
 }
 
