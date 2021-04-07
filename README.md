@@ -68,9 +68,29 @@ Klik `create`
 
 ![Bucket](img/bucket.png "Bucket")
 
+Untuk enable webhosting di S3, klik nama bucket, kemudan pilih tab `Properties`. Scroll ke bawah di bagian `Static website hosting` kemudian pilih `Edit`
+
+Pada `Static website hosting` pilih `enable`, kemudian `Hosting Type` pilih `Host a static website`, untuk `Index document` isi `index.html`
+
+![Bucket](img/hosting.png "Bucket")
+
+Kalau sudah, klik `Save changes`
 
 6. donwload code html, js dan deploy ke S3
 
-Untuk contoh code ada di `code` folder, download kemudian deploy ke S3 yang sudah dibuat di step ke 5.
+Untuk contoh code ada di `code` folder, download terlebih dahulu file yang ada di folder tersebut.
+
+Pada halaman S3, pilih bucket yang sudah kita buat sebelumnya, kemudian klik `Upload` code yang sudah kita download.
+
+![Bucket](img/upload.png "Bucket")
+
+Klik tombol `Upload` untuk jika sudah selesai.
+
+7. Testing website
+
+Setelah melakukan setup, kita bisa mencoba website yang sudah kita buat dengan mengakses ke end point static website di S3 kita. Untuk mengetahui end point website, kita bisa masuk ke bucket kita, kemudian pilih tab `Properties` lalu scroll ke bawah untuk website end point kita.
+
+![Bucket](img/endpoint.png "Bucket")
+
 
 ###End
