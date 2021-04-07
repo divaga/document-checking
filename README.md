@@ -62,11 +62,11 @@ def lambda_handler(event, context):
 
 Masuk ke halaman S3, kemudian pilih `create bucket`. Isi nama bucket kemudian uncheck block public access 
 
-![Create Bucket](img/createbucket "Create Bucket")
+![Create Bucket](img/createbucket.png "Create Bucket")
 
 Klik `create` 
 
-![Bucket](img/bucket "Bucket")
+![Bucket](img/bucket.png "Bucket")
 
 
 6. donwload code html, js dan deploy ke S3
