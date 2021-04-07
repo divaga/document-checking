@@ -52,12 +52,13 @@ def lambda_handler(event, context):
 ```
 
 2. Dalam Lambda Editor, pilih menu "Configuration -> Permission" dan klik pada Role Name di bagian Execution Role, akan terbuka window baru untuk menu IAM
+
 3. Di menu IAM, klik tombol "Attach Policies" dan tambahkan "AmazonTextractFullAccess" Policy
 
---- Edit this....
-
 4. Buat API Gateway lambda proxy, enable CORS dan deploy
- 
+
+Masuk ke halaman API Gateway 
+
 5. Buat S3 bucket dan enable website hosting
 
 Masuk ke halaman S3, kemudian pilih `create bucket`. Isi nama bucket kemudian uncheck block public access 
