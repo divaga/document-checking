@@ -56,6 +56,9 @@ def lambda_handler(event, context):
 3. Di menu IAM, klik tombol "Attach Policies" dan tambahkan "AmazonTextractFullAccess" Policy
 
 --- Edit this....
+
 4. Buat API Gateway lambda proxy, enable CORS dan deploy
+ 
 5. Buat S3 bucket dan enable website hosting
+
 6. donwload code html, js dan deploy ke S3
