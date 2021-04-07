@@ -1,7 +1,6 @@
 # VALIDASI DOKUMEN
 ## Membuat document checking atau validasi dokumen menggunakan Amazon Textract
 
-
 1. Buat Lambda Function manggunakan runtime Python 3.8 dan gunakan coding berikut ini:
 
 ```
@@ -61,4 +60,17 @@ def lambda_handler(event, context):
  
 5. Buat S3 bucket dan enable website hosting
 
+Masuk ke halaman S3, kemudian pilih `create bucket`. Isi nama bucket kemudian uncheck block public access 
+
+![Create Bucket](img/createbucket "Create Bucket")
+
+Klik `create` 
+
+![Bucket](img/bucket "Bucket")
+
+
 6. donwload code html, js dan deploy ke S3
+
+Untuk contoh code ada di `code` folder, download kemudian deploy ke S3 yang sudah dibuat di step ke 5.
+
+###End
