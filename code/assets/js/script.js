@@ -89,7 +89,7 @@ $(function(){
                 "X-Api-Key": 'blablabla'
                 // "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
             },
-            url: 'https://p66ftl44h2.execute-api.ap-southeast-1.amazonaws.com/dev/proxy',
+            url: '<<API GW URL>>',
             data: JSON.stringify({ 
                 'Image': data
             }),

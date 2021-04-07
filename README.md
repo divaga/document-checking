@@ -57,7 +57,32 @@ def lambda_handler(event, context):
 
 4. Buat API Gateway lambda proxy, enable CORS dan deploy
 
-Masuk ke halaman API Gateway kemudian 
+Masuk ke halaman API Gateway kemudian pilih `Create API` -> `REST API` -> `Build`. 
+
+Pilih `New API`. Isi nama API dengan `Endpoint Type` Regional, lalu klik `Create API`. 
+
+Masuk ke dashboard API Gateway, kemudian pilih API yang tadi kita buat. 
+
+![API](img/apiname.png "API")
+
+Kemudian, pada jendela di sebelah kiri, pilih Resources. Di Bagian Resources, pilih Create Resources
+
+`Resource Name` isi proxy kemudian `Create Resource`. 
+
+Klik methods `proxy` yang tadi kita buat, kemudian pada tombol `Actions` -> `Create Methods`. Pilih `Post`
+
+Untuk setup methods pilih Integration type `Lambda Function`, centang untuk `Use Lambda Proxy Integration`, Lambda pilih fungsi yang kita buat di step 1 lalu klik `Save`
+
+![API](img/lambda.png "API")
+
+Untuk melakukan deployment API yang sudah kita buat, pilih `Actions` lalu `Deploy API`
+
+Deployment stage pilih `New Stage`
+
+Stage name dev lalu klik Deploy. Jika sukses maka kita akan mendapatkan URL API Gateway kita
+
+![API](img/deploy.png "API")
+
 
 5. Buat S3 bucket dan enable website hosting
 
