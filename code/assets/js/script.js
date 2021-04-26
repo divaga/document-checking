@@ -66,14 +66,7 @@ $(function(){
     }
 
     function putLine(type, msg, type2, msg2) {
-        var tpl = $('<li class="working"><input type="text" value="0" data-width="48" data-height="48"'+
-                ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span></span></li>');
-
-        tpl.find('p')
-                    .append('<i>' + type + ":" + msg + '</i>')
-                    .append('<i>' + type2 + ":" + msg2 + '</i>');
-
-        tpl.appendTo(ul);
+        document.getElementById('detected-text').innerHTML = '<p style="color:white"><b>' + type + '</b>'  + msg + '<br><b>' + type2 + '</b>' + msg2 + '</p>';
 
         console.log(msg2)
     }
@@ -89,7 +82,7 @@ $(function(){
                 "X-Api-Key": 'blablabla'
                 // "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
             },
-            url: '<<API GW URL>>',
+            url: 'https://gv69yuq6p9.execute-api.ap-southeast-1.amazonaws.com/dev/proxy',
             data: JSON.stringify({ 
                 'Image': data
             }),
@@ -97,7 +90,7 @@ $(function(){
             contentType: "application/json",
             success: function(msg){
                 console.log('Success ');
-                putLine('Document Type:', msg.document_type, 'Document Text', msg.detected_text.replaceAll("|", "\n"));
+                putLine('Document Type:', msg.document_type, 'Document Text:', msg.detected_text.replaceAll("|", "\n"));
             }
         });
     }
