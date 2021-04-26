@@ -51,11 +51,11 @@ def lambda_handler(event, context):
     }
 ```
 
-2. Dalam Lambda Editor, pilih menu "Configuration -> Permission" dan klik pada Role Name di bagian Execution Role, akan terbuka window baru untuk menu IAM
+2. Dalam Lambda Editor, pilih menu `Configuration` -> `Permission` dan klik pada `Role Name` di bagian `Execution Role`, akan terbuka window baru untuk menu IAM
 
-3. Di menu IAM, klik tombol "Attach Policies" dan tambahkan "AmazonTextractFullAccess" Policy
+3. Di menu IAM, klik tombol `Attach Policies` dan tambahkan "AmazonTextractFullAccess" Policy
 
-4. Buat API Gateway lambda proxy, enable CORS dan deploy
+4. Buat API Gateway
 
 Masuk ke halaman API Gateway kemudian pilih `Create API` -> `REST API` -> `Build`. 
 
