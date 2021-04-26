@@ -1,7 +1,7 @@
 # VALIDASI DOKUMEN
 ## Membuat document checking atau validasi dokumen menggunakan Amazon Textract
 
-1. Buat Lambda Function manggunakan runtime Python 3.8 dan gunakan coding berikut ini:
+1. Buat Lambda Function menggunakan runtime Python 3.8 dan gunakan coding berikut ini:
 
 ```
 import json
@@ -29,8 +29,8 @@ def lambda_handler(event, context):
         if item['BlockType'] == 'LINE':
             detectedText += item['Text'] + '|'   
     
-    # get doc type from detected text
-    if (detectedText.lower().find("nik") != -1 and detectedText.lower().find("agama") != -1 and detectedText.lower().find("kewarganegaraan") != -1 and detectedText.lower().find("darah") != -1):
+    # get doc type from detected text, please modify based on your needs
+    if (detectedText.lower().find("nik") != -1 and detectedText.lower().find("agama") != -1 and detectedText.lower().find("lahir") != -1 and detectedText.lower().find("darah") != -1):
         doctype = "KTP"
     if (detectedText.lower().find("surat izin mengemudi") != -1 and detectedText.lower().find("driving license") != -1 ):
         doctype = "SIM"
@@ -59,7 +59,7 @@ def lambda_handler(event, context):
 
 Masuk ke halaman API Gateway kemudian pilih `Create API` -> `REST API` -> `Build`. 
 
-Pilih `New API`. Isi nama API dengan `Endpoint Type` Regional, lalu klik `Create API`. 
+Pilih `New API`. Isi nama API dengan `Endpoint Type` Regional (jika anda ingin menggunakan Cloudfront, pilih yang `Edge Optimized`), lalu klik `Create API`. 
 
 Masuk ke dashboard API Gateway, kemudian pilih API yang tadi kita buat. 
 
@@ -67,11 +67,9 @@ Masuk ke dashboard API Gateway, kemudian pilih API yang tadi kita buat.
 
 Kemudian, pada jendela di sebelah kiri, pilih Resources. Di Bagian Resources, pilih Create Resources
 
-`Resource Name` isi proxy kemudian `Create Resource`. 
+centang pada bagian `Configure as proxy resource` dan `Enable API Gateway CORS` kemudian `Create Resource`. 
 
-Klik methods `proxy` yang tadi kita buat, kemudian pada tombol `Actions` -> `Create Methods`. Pilih `Post`
-
-Untuk setup methods pilih Integration type `Lambda Function`, centang untuk `Use Lambda Proxy Integration`, Lambda pilih fungsi yang kita buat di step 1 lalu klik `Save`
+Pilih Lambda Function yang kita buat di step 1 lalu klik `Save`
 
 ![API](img/lambda.png "API")
 
@@ -79,12 +77,13 @@ Untuk melakukan deployment API yang sudah kita buat, pilih `Actions` lalu `Deplo
 
 Deployment stage pilih `New Stage`
 
-Stage name dev lalu klik Deploy. Jika sukses maka kita akan mendapatkan URL API Gateway kita
+Stage name dev lalu klik Deploy. Jika sukses maka kita akan mendapatkan URL API Gateway kita. Catat Invoke URL dari API Gateway ini karena kita akan membutuhkannya nanti.
 
 ![API](img/deploy.png "API")
 
+5. Jika anda ingin menggunakan Cloudfront, skip langkah nomor 6 dan lanjutkan langsung ke langkah nomor 7.
 
-5. Buat S3 bucket dan enable website hosting
+6. Buat S3 bucket dan enable website hosting
 
 Masuk ke halaman S3, kemudian pilih `create bucket`. Isi nama bucket kemudian uncheck block public access 
 
@@ -102,20 +101,34 @@ Pada `Static website hosting` pilih `enable`, kemudian `Hosting Type` pilih `Hos
 
 Kalau sudah, klik `Save changes`
 
-6. donwload code html, js dan deploy ke S3
+7. Buat S3 bucket (hanya jika anda ingin menggunakan Cloudfront dan tidak ingin membuka akses publik ke S3 bucket anda)
+
+Masuk ke halaman S3, kemudian pilih `create bucket`. Isi nama bucket kemudian create bucket.
+
+8. donwload code html, js dan deploy ke S3
 
 Untuk contoh code ada di `code` folder, download terlebih dahulu file yang ada di folder tersebut.
 
-Rubah End Point dari API Gateway yang ada di javascript file di `js/script.js`
+Rubah End Point dari API Gateway yang ada di javascript file di `js/script.js` dan tambahkan /proxy dibelakang API Gateway URL tersebut sehingga formatnya menjadi seperti ini: https://xxxxxxx.execute-api.ap-southeast-1.amazonaws.com/dev/proxy
 
-Pada halaman S3, pilih bucket yang sudah kita buat sebelumnya, kemudian klik `Upload` code yang sudah kita download.
+Pada halaman S3, pilih bucket yang sudah kita buat sebelumnya, kemudian klik `Upload` isi dari folder code (file index.html dan folder `assets`) yang sudah kita download.
 
 ![Bucket](img/upload.png "Bucket")
 
 Klik tombol `Upload` untuk jika sudah selesai.
 
-7. Testing website
+9. Konfigurasi Cloudfront
 
-Setelah melakukan setup, kita bisa mencoba website yang sudah kita buat dengan mengakses ke end point static website di S3 kita. Untuk mengetahui end point website, kita bisa masuk ke bucket kita, kemudian pilih tab `Properties` lalu scroll ke bawah untuk website end point kita.
+Masuk ke halaman Cloudfront dan klik pada `Create Distribution`. Pada bagian `Origin Domain Name` pilih S3 bucket yang sudah kita buat dan pada bagian `Default Root Object` kita isi dengan `index.html` lalu kita klik `Create Distribution`. Kita tunggu sampai statusnya berubah dari In Progress menjadi Deployed.
+
+11. Testing website
+
+Setelah melakukan setup, kita bisa mencoba website yang sudah kita buat dengan mengakses ke end point static website di S3 kita atau Cloudfront URL yang sudah kita configure. Untuk mengetahui end point website kalau kita menggunakan S3 web hosting, kita bisa masuk ke bucket kita, kemudian pilih tab `Properties` lalu scroll ke bawah untuk website end point kita.
 
 ![Bucket](img/endpoint.png "Bucket")
+
+Untuk URL dari Cloudfront, kita bisa lihat di bagian `Domain Name` pada menu Cloudfront.
+
+![Bucket](img/cloudfront.png "Bucket")
+
+12. Coba upload berbagai tipe dokumen dan cek hasilnya.
