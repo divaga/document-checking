@@ -63,11 +63,11 @@ Pilih `New API`. Isi nama API dengan `Endpoint Type` Regional (jika anda ingin m
 
 Masuk ke dashboard API Gateway, kemudian pilih API yang tadi kita buat. 
 
-![API](img/apiname.png "API")
-
 Kemudian, pada jendela di sebelah kiri, pilih Resources. Di Bagian Resources, pilih Create Resources
 
 centang pada bagian `Configure as proxy resource` dan `Enable API Gateway CORS` kemudian `Create Resource`. 
+
+![API](img/apiname.png "API")
 
 Pilih Lambda Function yang kita buat di step 1 lalu klik `Save`
 
@@ -109,7 +109,7 @@ Masuk ke halaman S3, kemudian pilih `create bucket`. Isi nama bucket kemudian cr
 
 Untuk contoh code ada di `code` folder, download terlebih dahulu file yang ada di folder tersebut.
 
-Rubah End Point dari API Gateway yang ada di javascript file di `js/script.js` dan tambahkan /proxy dibelakang API Gateway URL tersebut sehingga formatnya menjadi seperti ini: https://xxxxxxx.execute-api.ap-southeast-1.amazonaws.com/dev/proxy
+Rubah End Point dari API Gateway yang ada di javascript file di `js/script.js` dan tambahkan /proxy dibelakang API Gateway URL tersebut sehingga formatnya menjadi seperti ini: `https://xxxxxxx.execute-api.ap-southeast-1.amazonaws.com/dev/proxy`
 
 Pada halaman S3, pilih bucket yang sudah kita buat sebelumnya, kemudian klik `Upload` isi dari folder code (file index.html dan folder `assets`) yang sudah kita download.
 
