@@ -119,7 +119,10 @@ Klik tombol `Upload` untuk jika sudah selesai.
 
 9. Konfigurasi Cloudfront
 
-Masuk ke halaman Cloudfront dan klik pada `Create Distribution`. Pada bagian `Origin Domain Name` pilih S3 bucket yang sudah kita buat dan pada bagian `Default Root Object` kita isi dengan `index.html` lalu kita klik `Create Distribution`. Kita tunggu sampai statusnya berubah dari In Progress menjadi Deployed.
+Masuk ke halaman Cloudfront dan klik pada `Create Distribution`. Pada bagian `Origin Domain Name` pilih S3 bucket yang sudah kita buat.
+Pada bagian `Restrict Bucket Access` kita pilih `Yes` kemudian pada bagian `Origin Access Identity` kita pilih `Create a New Identity` dan pada bagian `Grant Read Permissions on Bucket` kita pilih `Yes, Update Bucket Policy`. Kemudian pada bagian `Default Root Object` kita isi dengan `index.html`.lalu kita klik `Create Distribution`. Kita tunggu sampai statusnya berubah dari In Progress menjadi Deployed.
+
+![Bucket](img/cf.png "Bucket")
 
 11. Testing website
 
