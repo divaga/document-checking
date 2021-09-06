@@ -42,6 +42,12 @@ section, footer, header, aside{
     display: block;
 }
 
+h1 { 
+    display: block;
+    font-size: 2em;
+    color: rgb(233, 232, 232);
+    font-weight: bold;
+  }
 
 /*----------------------------
     The file upload form
@@ -117,9 +123,9 @@ section, footer, header, aside{
 
     border-top:1px solid #3d4043;
     border-bottom:1px solid #2b2e31;
-    padding:15px;
-    height: 52px;
-
+    padding:10px;
+    height: 15px;
+    color: #EEE;
     position: relative;
 }
 
@@ -135,7 +141,7 @@ section, footer, header, aside{
     font-size: 16px;
     font-weight: bold;
     position: absolute;
-    top: 20px;
+
     /* left: 100px; */
 }
 
@@ -156,9 +162,7 @@ section, footer, header, aside{
 #upload ul li span{
     width: 15px;
     height: 12px;
-    /* background: url('../img/icons.png') no-repeat; */
     position: absolute;
-    top: 34px;
     right: 33px;
     word-wrap: break-word;
     cursor:pointer;
