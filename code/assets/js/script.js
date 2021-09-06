@@ -51,6 +51,7 @@ $(function(){
 
     function getBase64Image(img) {
         var reader = new FileReader();
+        document.getElementById('detected-text').innerHTML = '';
         reader.readAsDataURL(img);
         reader.onload = function () {
             var data = reader.result.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
@@ -66,7 +67,14 @@ $(function(){
     }
 
     function putLine(type, msg, type2, msg2) {
-        document.getElementById('detected-text').innerHTML = '<p style="color:white"><b>' + type + '</b>'  + msg + '<br><b>' + type2 + '</b>' + msg2 + '</p>';
+        info_list = '<ul>'
+        for (const property in msg2) {
+            info_list = info_list + `<li>${property}=&nbsp; ${msg2[property]}</li>`;
+          }
+        
+        info_list = info_list + '</ul>';
+
+        document.getElementById('detected-text').innerHTML = '<p style="color:white">' + type + '<br><b><font size=18>'  + msg + '</font></b><br>' + type2 + '<br>' + info_list + '</p>';
 
         console.log(msg2)
     }
@@ -82,7 +90,7 @@ $(function(){
                 "X-Api-Key": 'blablabla'
                 // "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
             },
-            url: 'https://gv69yuq6p9.execute-api.ap-southeast-1.amazonaws.com/dev/proxy',
+            url: 'https://yourapigateway.execute-api.ap-southeast-1.amazonaws.com/dev/proxy',
             data: JSON.stringify({ 
                 'Image': data
             }),
@@ -90,7 +98,7 @@ $(function(){
             contentType: "application/json",
             success: function(msg){
                 console.log('Success ');
-                putLine('Document Type:', msg.document_type, 'Document Text:', msg.detected_text.replaceAll("|", "\n"));
+                putLine('Document Type:', msg.document_type, 'Document Data:', msg.detected_text);
             }
         });
     }
