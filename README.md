@@ -76,7 +76,7 @@ def check_doc(detectedText):
     # get doc type from detected text, please modify based on your needs
     if (detectedText.lower().find("nik") != -1 and detectedText.lower().find("agama") != -1 and detectedText.lower().find("lahir") != -1 and detectedText.lower().find("darah") != -1):
         doctype = "KTP"
-    if (detectedText.lower().find("sim") != -1 and detectedText.lower().find("tingg") != -1 ):
+    if (detectedText.lower().find("s/d") != -1 and detectedText.lower().find("tingg") != -1 ):
         doctype = "SIM"
     
     return(doctype)
