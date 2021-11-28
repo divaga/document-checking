@@ -1,5 +1,5 @@
 # VALIDASI DOKUMEN
-## Membuat document checking atau validasi dokumen menggunakan Amazon Textract
+## Membuat simple document checking atau validasi dokumen menggunakan Amazon Textract
 
 1. Buat Lambda Function menggunakan runtime Python 3.8 dan gunakan coding berikut ini:
 
